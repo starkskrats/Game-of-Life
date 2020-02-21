@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="063d0c30-a6ae-475d-9989-b06d2b472e19" name="CS3750" url="http://cs3750.andrewstarks.com">
+        <fileTransfer host="157.245.175.130" port="22" rootFolder="/home/cs3750/Game of Life" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
