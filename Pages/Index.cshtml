@@ -5,6 +5,28 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Conway's Game of Life</h1>
+        
+        <canvas id="gameBoard" width="600" height="500" style="border:1px solid #000000;"></canvas>
+
+        <script>
+        var c = document.getElementById("gameBoard");
+        var ctx = c.getContext("2d");
+
+            for (var i = 0; i < 20; i++) {
+                var x = 30 * i;
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, 500);
+                ctx.stroke();
+            }
+
+            for (var i = 0; i < 20; i++) {
+                var x = 25 * i;
+                ctx.moveTo(0, x);
+                ctx.lineTo(600, x);
+                ctx.stroke();
+            }
+
+
+        </script>
 </div>
