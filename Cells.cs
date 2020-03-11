@@ -9,29 +9,12 @@ namespace Game_of_Life
     {
 
         private bool isAlive;
-        private int neighbors;
-        // rgb
-
 
         public bool LivingStatus
         {
             get { return isAlive; }
             set { isAlive = value; }
         }
-            
-        public int NeighborCount
-        {
-            get { return neighbors; }
-            set { neighbors = value; }
-        }
-
-        // get/set for rgb
-
-        public void IncreaseNeighbors()
-        {
-            neighbors++;
-        }
-
 
     }
 }

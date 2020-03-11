@@ -2,42 +2,101 @@ namespace Game_of_Life
 {
     public class Game
     {
-        // Pass In - takes two arrays (one is the old gameboard, which will be used to update everything according to the game rules, and the other is changes made by the user
-            // Potentially returns an array as well - this would be the updated gameboard
 
-            // What to consider: how to save/create this new gameboard. can save the old array into a global "new" one which will make it so other methods don't need to take in the array value. 
-                // copy it over, and that could make it easier to deal with changing the status of living/dead cells.
+        private Cells[] gameBoard;
 
+        /// <summary>
+        /// Constructor to initialize gameboard size and set all cells on the gameboard to false.
+        /// </summary>
+        public Game()
+        {
+            gameBoard = new Cells[441];
 
-        // checkNeighbors - takes in an array (the old array passed in)
-            // for the length of the array, minus the top and bottom rows
-                // if value is out of bounds (on the edges of the "board")
-                    // skip to next number
+            for(int i = 0; i < gameBoard.Length; i++)
+            {
+                gameBoard[i].LivingStatus = false;
+            }
+        }
+        
+        /// <summary>
+        /// For the length of the game board, determine the amount of neighbors a cell has and its living status.
+        /// </summary>
+        public void UpdateStatus()
+        {
+            // For the length of the gameboard, ignoring the top and bottom row.
+            for (int i = 22; i < (gameBoard.Length - 22); i++)
+            {
+                // Check if on the edges of the gameboard.
+                int placement = i % 22;
+                if ((placement == 0) || (placement == 21))
+                    continue;
+                
+                // Reset Neighbors
+                int neighbors = CountNeighbors(i);
 
-                // reset neighbors to 0
-                // an individual if statement for each of the squares around i: i-23, i-22, i-21, i-1, i+1, i+21, i+22, i+23
-                // if (array[values listed above].isAlive)
-                    // array[i].increaseNeighbors()
+                if(gameBoard[i].LivingStatus)
+                {
+                    // if the cell has less than 2 neighbors or more than 3
+                    if(neighbors > 3 || neighbors < 2)
+                    {
+                        gameBoard[i].LivingStatus = false;
+                    }                 
+                }
+                else
+                {
+                    if(neighbors == 3)
+                    {
+                        gameBoard[i].LivingStatus = true;
+                    }
+                }
+            }
 
-             // call updateStatus
+        }
+        
+        /// <summary>
+        /// Check the neighbors of the indicated cell.
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns>A count of the neighbors a cell has.</returns>
+        public int CountNeighbors(int i)
+        {
+            int count = 0;
 
-        // update Status - takes in old array
-            // for the length of the array, minus the top and bottom rows
-                // if value is out of bounds (on the edges of the board)
-                    // skip to next number
+            // Check all the neighbors around the current cell and increase count if they are alive.
+            if (gameBoard[i - 23].LivingStatus)
+            {
+                count++;
+            }
+            if (gameBoard[i - 22].LivingStatus)
+            {
+                count++;
+            }
+            if (gameBoard[i - 21].LivingStatus)
+            {
+                count++;
+            }
+            if (gameBoard[i - 1].LivingStatus)
+            {
+                count++;
+            }
+            if (gameBoard[i + 1].LivingStatus)
+            {
+                count++;
+            }
+            if (gameBoard[i + 21].LivingStatus)
+            {
+                count++;
+            }
+            if (gameBoard[i + 22].LivingStatus)
+            {
+                count++;
+            }
+            if (gameBoard[i + 23].LivingStatus)
+            {
+                count++;
+            }
 
-                // if(array[i].isAlive)
-                    // if(array[i].neighbors is greater than 3 or less than 2)
-                        //array[i].isAlive = false;
-                // else // aka the cell is dead
-                    // if(array[i].neighbors == 3)
-                        // array[i].isAlive = true;
-
-            // save this gameboard. will depend upon how we decide to save it (global variable, or just pass it to a method)
-
-
-        // merge Boards -- takes the new gameboard (after status has been updated) and the change board (changes users have added on)
-            // for length of the change board,
-                // if a cell is alive, make the equivalent cell in the new gameboard alive.
+            return count;
+        }
     }
 }
