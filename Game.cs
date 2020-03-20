@@ -121,6 +121,14 @@ namespace Game_of_Life
         /// </summary>
         public static void UpdateStatus()
         {
+            for (int i = 0; i < newGameBoard.Length; i++)
+            {
+                newGameBoard[i].isAlive = false;
+                newGameBoard[i].red = -1;
+                newGameBoard[i].green = -1;
+                newGameBoard[i].blue = -1;
+            }
+            
             // For the length of the gameboard, ignoring the top and bottom row.
             for (int i = 22; i < (currentGameBoard.Length - 23); i++)
             {
@@ -229,7 +237,7 @@ namespace Game_of_Life
                 }
             }
 
-            for (int i = 22; i < (currentGameBoard.Length - 23); i++)
+            for (int i = 0; i < currentGameBoard.Length; i++)
             {
                 currentGameBoard[i].isAlive = newGameBoard[i].isAlive;
                 currentGameBoard[i].red = newGameBoard[i].red;
