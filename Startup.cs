@@ -13,10 +13,10 @@ namespace Game_of_Life
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app)
         {
+            app.UseDefaultFiles();
             app.UseStaticFiles();
             app.UseRouting();
             app.UseAuthorization();
-            app.UseDefaultFiles();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapHub<GameHub>("/game");
