@@ -1,102 +1,259 @@
 namespace Game_of_Life
 {
-    public class Game
+    public static class Game
     {
-
-        private Cells[] gameBoard;
-
-        /// <summary>
-        /// Constructor to initialize gameboard size and set all cells on the gameboard to false.
-        /// </summary>
-        public Game()
-        {
-            gameBoard = new Cells[441];
-
-            for(int i = 0; i < gameBoard.Length; i++)
-            {
-                gameBoard[i].LivingStatus = false;
-            }
-        }
+        public static Cells[] currentGameBoard = new Cells[441]{new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells()};
         
+        public static Cells[] newGameBoard = new Cells[441]{new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(), new Cells(),
+            new Cells(), new Cells(), new Cells(), new Cells(), new Cells()};
+
         /// <summary>
         /// For the length of the game board, determine the amount of neighbors a cell has and its living status.
         /// </summary>
-        public void UpdateStatus()
+        public static void UpdateStatus()
         {
             // For the length of the gameboard, ignoring the top and bottom row.
-            for (int i = 22; i < (gameBoard.Length - 22); i++)
+            for (int i = 22; i < (currentGameBoard.Length - 23); i++)
             {
                 // Check if on the edges of the gameboard.
-                int placement = i % 22;
-                if ((placement == 0) || (placement == 21))
+                int placement = i % 21;
+                if ((placement == 0) || (placement == 20))
                     continue;
                 
                 // Reset Neighbors
-                int neighbors = CountNeighbors(i);
+                int neighbors = 0;
+                int red = 0;
+                int green = 0;
+                int blue = 0;
+                
+                if (currentGameBoard[i - 22].isAlive)
+                {
+                    red += currentGameBoard[i - 22].red;
+                    green += currentGameBoard[i - 22].green;
+                    blue += currentGameBoard[i - 22].blue;
+                    neighbors++;
+                }
+                if (currentGameBoard[i - 21].isAlive)
+                {
+                    red += currentGameBoard[i - 21].red;
+                    green += currentGameBoard[i - 21].green;
+                    blue += currentGameBoard[i - 21].blue;
+                    neighbors++;
+                }
+                if (currentGameBoard[i - 20].isAlive)
+                {
+                    red += currentGameBoard[i - 20].red;
+                    green += currentGameBoard[i - 20].green;
+                    blue += currentGameBoard[i - 20].blue;
+                    neighbors++;
+                }
+                if (currentGameBoard[i - 1].isAlive)
+                {
+                    red += currentGameBoard[i - 1].red;
+                    green += currentGameBoard[i - 1].green;
+                    blue += currentGameBoard[i - 1].blue;
+                    neighbors++;
+                }
+                if (currentGameBoard[i + 1].isAlive)
+                {
+                    red += currentGameBoard[i + 1].red;
+                    green += currentGameBoard[i + 1].green;
+                    blue += currentGameBoard[i + 1].blue;
+                    neighbors++;
+                }
+                if (currentGameBoard[i + 20].isAlive)
+                {
+                    red += currentGameBoard[i + 20].red;
+                    green += currentGameBoard[i + 20].green;
+                    blue += currentGameBoard[i + 20].blue;
+                    neighbors++;
+                }
+                if (currentGameBoard[i + 21].isAlive)
+                {
+                    red += currentGameBoard[i + 21].red;
+                    green += currentGameBoard[i + 21].green;
+                    blue += currentGameBoard[i + 21].blue;
+                    neighbors++;
+                }
+                if (currentGameBoard[i + 22].isAlive)
+                {
+                    red += currentGameBoard[i + 22].red;
+                    green += currentGameBoard[i + 22].green;
+                    blue += currentGameBoard[i + 22].blue;
+                    neighbors++;
+                }
 
-                if(gameBoard[i].LivingStatus)
+                if(currentGameBoard[i].isAlive)
                 {
                     // if the cell has less than 2 neighbors or more than 3
                     if(neighbors > 3 || neighbors < 2)
                     {
-                        gameBoard[i].LivingStatus = false;
-                    }                 
+                        newGameBoard[i].red = -1;
+                        newGameBoard[i].green = -1;
+                        newGameBoard[i].blue = -1;
+                        newGameBoard[i].isAlive = false;
+                    }
+                    else if (neighbors == 3)
+                    {
+                        newGameBoard[i].red = red / 3;
+                        newGameBoard[i].green = green / 3;
+                        newGameBoard[i].blue = blue / 3;
+                        newGameBoard[i].isAlive = true;
+                    }
+                    else if (neighbors == 2)
+                    {
+                        newGameBoard[i].red = red / 2;
+                        newGameBoard[i].green = green / 2;
+                        newGameBoard[i].blue = blue / 2;
+                        newGameBoard[i].isAlive = true;
+                    }
                 }
                 else
                 {
-                    if(neighbors == 3)
+                    if (neighbors == 3)
                     {
-                        gameBoard[i].LivingStatus = true;
+                        newGameBoard[i].red = red / 3;
+                        newGameBoard[i].green = green / 3;
+                        newGameBoard[i].blue = blue / 3;
+                        newGameBoard[i].isAlive = true;
                     }
                 }
             }
 
+            for (int i = 22; i < (currentGameBoard.Length - 23); i++)
+            {
+                currentGameBoard[i].isAlive = newGameBoard[i].isAlive;
+                currentGameBoard[i].red = newGameBoard[i].red;
+                currentGameBoard[i].green = newGameBoard[i].green;
+                currentGameBoard[i].blue = newGameBoard[i].blue;
+            }
         }
-        
-        /// <summary>
-        /// Check the neighbors of the indicated cell.
-        /// </summary>
-        /// <param name="i"></param>
-        /// <returns>A count of the neighbors a cell has.</returns>
-        public int CountNeighbors(int i)
+
+        public static void UpdateCell(int index, int red, int green, int blue)
         {
-            int count = 0;
-
-            // Check all the neighbors around the current cell and increase count if they are alive.
-            if (gameBoard[i - 23].LivingStatus)
+            if (currentGameBoard[index].isAlive)
             {
-                count++;
+                currentGameBoard[index].red = -1;
+                currentGameBoard[index].green = -1;
+                currentGameBoard[index].blue = -1;
+                currentGameBoard[index].isAlive = false;
             }
-            if (gameBoard[i - 22].LivingStatus)
+            else
             {
-                count++;
+                currentGameBoard[index].red = red;
+                currentGameBoard[index].green = green;
+                currentGameBoard[index].blue = blue;
+                currentGameBoard[index].isAlive = true;
             }
-            if (gameBoard[i - 21].LivingStatus)
-            {
-                count++;
-            }
-            if (gameBoard[i - 1].LivingStatus)
-            {
-                count++;
-            }
-            if (gameBoard[i + 1].LivingStatus)
-            {
-                count++;
-            }
-            if (gameBoard[i + 21].LivingStatus)
-            {
-                count++;
-            }
-            if (gameBoard[i + 22].LivingStatus)
-            {
-                count++;
-            }
-            if (gameBoard[i + 23].LivingStatus)
-            {
-                count++;
-            }
-
-            return count;
         }
     }
 }
